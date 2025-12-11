@@ -23,7 +23,7 @@ A real-time chat application built with **React**, **Node.js**,**Zustand** **Soc
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
+git clone <my-repo-url>
 cd Frontend
 npm install
 ```
