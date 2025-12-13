@@ -20,7 +20,7 @@ const Login = () => {
       password: data.password,
     };
     axios
-      .post("/api/user/login", userInfo , { withCredentials: true })
+      .post("https://chatify-dev-haris.onrender.com/api/user/login", userInfo , { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         if (response.data) {

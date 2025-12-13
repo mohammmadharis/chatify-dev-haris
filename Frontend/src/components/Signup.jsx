@@ -26,7 +26,7 @@ const SignUp = () => {
     };
 
     await axios
-      .post("/api/user/signup", userInfo)
+      .post("https://chatify-dev-haris.onrender.com/api/user/signup", userInfo)
       .then((response) => {
         console.log(response.data);
         if (response.data) {
