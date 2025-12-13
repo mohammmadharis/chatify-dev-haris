@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io(import.meta.env.VITE_API_URL, {
+      const socket = io("https://chatify-dev-haris.onrender.com", {
         query: { userId: authUser.user._id },
         withCredentials: true,
       });
