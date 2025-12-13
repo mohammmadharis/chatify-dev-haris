@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const [authUser, setAuthUser] = useAuth();
+  const [ setAuthUser] = useAuth();
   const {
     register,
     handleSubmit,
@@ -31,10 +30,13 @@ const Login = () => {
       })
       .catch((error) => {
         if (error.response) {
+          console.log(error.response.data.error)
           toast.error("Error : " + error.response.data.error ||  JSON.stringify(error.response.data));
         }
          else {
     alert("Error: " + error.message);
+    console.log(error.response.data.error)
+    console.log( error.message)
   }
       });
   };
@@ -101,7 +103,7 @@ const Login = () => {
 
           {/* Signup Link */}
           <p className="text-center text-sm mt-3 text-white/80">
-            Don't have an account?{" "}
+           {" Don't have an account? "}
             <Link
               to="/signup"
               className="text-blue-300 cursor-pointer hover:underline"
