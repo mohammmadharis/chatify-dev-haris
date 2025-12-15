@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
-import io from "socket.io-client";
+import { io } from "socket.io-client";
 const socketContext = createContext();
 
 // it is a hook.
@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chatify-dev-haris.onrender.com", {
+      const socket = io(import.meta.env.VITE_API_URL, {
         query: { userId: authUser.user._id },
         withCredentials: true,
       });

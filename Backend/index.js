@@ -15,7 +15,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL, // https://chatify-dev-haris.vercel.app
+     origin: [
+      "https://chatify-dev-haris.vercel.app",
+      "http://localhost:5173",
+    ], 
     credentials: true,
   })
 );
