@@ -7,8 +7,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 // ROUTES
-import userRoute from "./routes/user.route.js";
-import messageRoute from "./routes/message.route.js";
+import userRoute from "../routes/user.route.js";
+import messageRoute from "../routes/message.route.js";
 
 dotenv.config();
 
