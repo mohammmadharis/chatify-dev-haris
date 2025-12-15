@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const [ setAuthUser] = useAuth();
+  const [setAuthUser] = useAuth();
   const {
     register,
     handleSubmit,
@@ -26,7 +26,9 @@ const SignUp = () => {
     };
 
     await axios
-      .post("https://chatify-dev-haris.onrender.com/api/user/signup", userInfo)
+      .post(`${import.meta.env.VITE_API_URL}/api/user/signup`, userInfo, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log(response.data);
         if (response.data) {

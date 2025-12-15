@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+
 function useGetAllUsers() {
   const [allUsers, setAllUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const getUsers = async () => {
       setLoading(true);
       try {
         const token = Cookies.get("jwt");
-        const response = await axios.get("https://chatify-dev-haris.onrender.com/api/user/allusers", {
-          credentials: "include",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/user/allusers`,
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setAllUsers(response.data);
-        setLoading(false);
       } catch (error) {
-        console.log("Error in useGetAllUsers: " + error);
+        console.error("Error in useGetAllUsers:", error.response?.data || error.message);
+      } finally {
+        setLoading(false);
       }
     };
+
     getUsers();
   }, []);
+
   return [allUsers, loading];
 }
 
